@@ -1,0 +1,136 @@
+{
+	"approved": true,
+	"contentrating": "Everyone",
+	"description" : "This Wallpaper is using WebGL, WebAudio and a simple shader to get some Fr",
+	"file": "index.html",
+	"general": {
+		"properties": {
+			"schemecolor" : {
+				"order": 0,
+				"text": "ui_browse_properties_scheme_color",
+				"type": "color",
+				"value": "0 0 0"
+			},
+			"icue_mode" : {
+				"order": 10,
+				"text": "ui_icue_mode",
+				"type": "bool",
+				"value": true
+			},
+			"icue_area_xoff" : {
+				"condition": "icue_mode.value",
+				"editable": false,
+				"max": 100,
+				"min": 5,
+				"order": 20,
+				"text": "ui_icue_area_xoff",
+				"type": "slider",
+				"value": 50
+			},
+			"icue_area_yoff" : {
+				"condition": "icue_mode.value",
+				"editable": false,
+				"max": 100,
+				"min": 5,
+				"order": 30,
+				"text": "ui_icue_area_yoff",
+				"type": "slider",
+				"value": 90
+			},
+			"icue_area_width" : {
+				"condition": "icue_mode.value",
+				"editable": false,
+				"max": 100,
+				"min": 5,
+				"order": 40,
+				"text": "ui_icue_area_width",
+				"type": "slider",
+				"value": 75
+			},
+			"icue_area_height" : {
+				"condition": "icue_mode.value",
+				"editable": false,
+				"max": 100,
+				"min": 5,
+				"order": 50,
+				"text": "ui_icue_area_height",
+				"type": "slider",
+				"value": 30
+			},
+			"icue_area_blur" : {
+				"condition": "icue_mode.value",
+				"editable": false,
+				"max": 5,
+				"min": 0,
+				"order": 60,
+				"text": "ui_icue_area_blur",
+				"type": "slider",
+				"value": 1
+			},
+			"icue_area_decay" : {
+				"condition": "icue_mode.value",
+				"editable": false,
+				"max": 100,
+				"min": 0,
+				"order": 70,
+				"text": "ui_icue_area_decay",
+				"type": "slider",
+				"value": 20
+			},
+			"icue_area_preview" : {
+				"condition": "icue_mode.value",
+				"order": 187,
+				"text": "ui_icue_area_preview",
+				"type": "bool",
+				"value": false
+			},
+			"speed" : {
+				"editable": false,
+				"max": 20,
+				"min": 1,
+				"order": 80,
+				"text": "ui_speed",
+				"type": "slider",
+				"value": 7
+			},
+			"shadeContrast" : {
+				"editable": false,
+				"max": 1000,
+				"min": 1,
+				"order": 90,
+				"text": "ui_shadeContrast",
+				"type": "slider",
+				"value": 20
+			},
+			"audio_multiplier" : {
+				"editable": true,
+				"max": 100,
+				"min": 1,
+				"order": 100,
+				"text": "ui_audio_multiplier",
+				"type": "slider",
+				"value": 35
+			},
+			"ink_color" : {
+				"order": 0,
+				"text": "ui_browse_properties_scheme_color",
+				"type": "color",
+				"value": "0 0 0"
+			},
+			"paper_color" : {
+				"order": 0,
+				"text": "ui_browse_properties_scheme_color",
+				"type": "color",
+				"value": "0 0 0"
+			}
+		},
+		"supportsaudioprocessing": true
+	},
+	"preview": "preview.gif",
+	"tags": [
+		"Abstract"
+	],
+	"title": "Rorschach Animated",
+	"type": "web",
+	"visibility": "public"
+}
