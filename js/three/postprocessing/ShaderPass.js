@@ -34,9 +34,25 @@ THREE.ShaderPass.prototype = Object.assign(Object.create(THREE.Pass.prototype), 
 
 	render: function (renderer, writeBuffer, readBuffer, deltaTime, maskActive) {
 
-		if (this.uniforms[this.textureID]) {
+		// set render start time
+		if(!this.startTime) {
+			this.startTime = (Date.now() / 1000) - 0.5;
+		}
 
+		// set shader runtime uniform
+		if(this.uniforms["iTime"]) {
+			var runtime = (Date.now() / 1000) - this.startTime;
+			this.uniforms["iTime"].value = runtime;
+		}
+
+		// set texture channel sampler
+		if (this.uniforms[this.textureID]) {
 			this.uniforms[this.textureID].value = readBuffer.texture;
+		}
+
+		// set resolution uniform
+		if(this.uniforms["iResolution"]) {
+			this.uniforms["iResolution"].value = renderer.getSize(new THREE.Vector2());
 		}
 
 		this.fsQuad.material = this.material;

@@ -11,11 +11,12 @@ THREE.RorSchader = {
     uniforms: {
 		tDiffuse: { value: null },
         iTime: { value: 1.0 },
+        timeBoost: { value: 0.1 },
         iResolution: { value: new THREE.Vector2(1, 1) },
         inkColor: { value: new THREE.Vector3(0.01, 0.01, 0.1) },
         paperColor: { value: new THREE.Vector3(1, 0.9, 0.8) },
         speed: { value: 0.0075 },
-        shadeContrast: { value: 0.55 },
+        shade_contrast: { value: 0.55 },
     },
 
     // Default vertex shader
@@ -35,14 +36,15 @@ THREE.RorSchader = {
     // 3D simplex noise taken from: https://www.shadertoy.com/view/XsX3zB
     fragmentShader: `
     precision mediump float;
-      
+    
     uniform float iTime;
+    uniform float timeBoost;
 	uniform sampler2D tDiffuse;
     uniform vec2 iResolution;
     uniform vec3 inkColor;
     uniform vec3 paperColor;
     uniform float speed;
-    uniform float shadeContrast;
+    uniform float shade_contrast;
       
     const float F3 =  0.3333333;
     const float G3 =  0.1666667;
@@ -110,13 +112,13 @@ THREE.RorSchader = {
         vec2 uv = 1.0 - gl_FragCoord.xy / iResolution.xy;
         vec2 coord = 1.0 - uv * 2.0;
         uv.x = 1.0 - abs(1.0 - uv.x * 2.0);
-        vec3 p = vec3(uv.x, uv.y, iTime * speed);
+        vec3 p = vec3(uv.x, uv.y, (iTime + timeBoost) * speed);
         
         float blot = fbm(p * 3.0 + 8.0);
         float shade = fbm(p * 2.0 + 16.0);
         
         blot = (blot + (sqrt(uv.x) - abs(0.5 - uv.y)));
-        blot = smoothstep(0.65, 0.71, blot) * max(1.0 - shade * shadeContrast, 0.0);
+        blot = smoothstep(0.65, 0.71, blot) * max(1.0 - shade * shade_contrast, 0.0);
         
         gl_FragColor = vec4(mix(paperColor, inkColor, blot), 1.0);
         gl_FragColor.rgb *= 1.0 - pow(max(length(coord) - 0.5, 0.0), 5.0);

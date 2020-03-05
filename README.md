@@ -1,6 +1,6 @@
-# Rorschach Animated
+# ReactiveInk
 
-This is a Wallpaper for Wallpaper Engine.
+Another Web Wallpaper For Wallpaper Engine (WIP)
 
 ### Changelog:
 
