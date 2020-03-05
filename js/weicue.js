@@ -106,18 +106,18 @@ var weicue = {
     },
 
     // show or hide preview
-    updatePreview: function (showTrue) {
+    updatePreview: function () {
         var self = weicue;
-
-        if (!self.preview && showTrue) {
+        var sett = self.settings;
+        // create preview?
+        if (!self.preview && sett.icue_area_preview) {
             self.preview = document.createElement("div");
             self.preview.classList.add("cuePreview");
             document.body.appendChild(self.preview);
         }
-
         // update settings or destroy
         if (self.preview) {
-            if (!showTrue) {
+            if (!sett.icue_area_preview) {
                 document.body.removeChild(self.preview);
                 self.preview = null;
             }
@@ -128,7 +128,7 @@ var weicue = {
     // will initialize ICUE api & usage
     init: function (originCanvas) {
         var self = weicue;
-        if (!self.icueAvailable) {
+        if (!self.available) {
             self.icueMessage("iCUE: Not available!");
             return;
         }
@@ -171,7 +171,7 @@ var weicue = {
     updateFrame: function () {
         var self = weicue;
         var sett = self.settings;
-        if (self.PAUSED || self.devices.length < 1 || sett.icue_mode == 0) return;
+        if (self.devices.length < 1 || sett.icue_mode == 0) return;
         // projection mode
         if (sett.icue_mode == 1) {
             // get local values
@@ -242,7 +242,7 @@ if (!window.wallpaperPluginListener)
 // actual plugin handler
 var pluginLoad = function (name, version) {
     console.log("weiCUE plugin: " + name + ", Version: " + version);
-    if (name === "cue") weicue.icueAvailable = true;
+    if (name === "cue") weicue.available = true;
 };
 
 // register event handler or wrap it, if it exists

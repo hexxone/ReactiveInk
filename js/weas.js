@@ -43,7 +43,7 @@ var weas = {
 		mids_multiplier: 0.75,
 		bass_multiplier: 1,
 		// ignore value leveling for "silent" data
-		minimum_volume: 0.001,
+		minimum_volume: 0.005,
 	},
 	// function will get called with the audio data as array, containing L & R channels
 	audioListener: function (audioArray) {

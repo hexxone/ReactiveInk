@@ -4,124 +4,296 @@
 	"description" : "This Wallpaper is using WebGL, WebAudio and a simple shader to get some Fr",
 	"file": "index.html",
 	"general": {
+		"localization": {
+			"de-de": {
+				"ui_HEADER_MAIN": "<u><h4>Allgemein</h4></u>",
+				"ui_HEADER_AUDIO": "<u><h4>Audio</h4></u>",
+				"ui_HEADER_ICUE": "<u><h4>iCUE LED Effekte</h4></u>",
+				"ui_spacer1": "=============================",
+				"ui_spacer2": "--------------------------------------------------",
+				"ui_ink_color": "Tinte",
+				"ui_paper_color": "Hintergrund",
+				"ui_icue_area_blur": "Weichzeichner",
+				"ui_icue_area_decay": "Farbverlust",
+				"ui_icue_area_height": "Projektion Höhe",
+				"ui_icue_area_preview": "Vorschaufenster",
+				"ui_icue_area_width": "Projektion Breite",
+				"ui_icue_area_xoff": "Projektion X Abstand",
+				"ui_icue_area_yoff": "Projektion Y Abstand",
+				"ui_icue_main_color": "iCUE Farbe",
+				"ui_icue_mode": "iCUE Modus",
+				"ui_icue_mode_0": "Aus",
+				"ui_icue_mode_1": "Projektion",
+				"ui_icue_mode_2": "Farbe",
+				"ui_speed": "Geschwindigkeit",
+				"ui_blur_strength": "Blur Shader",
+				"ui_strength": "ChromaticA Shader",
+				"ui_shade_contrast": "Kontrast",
+				"ui_audio_multiplier": "Audio Einfluss",
+				"ui_audio_smoothing": "Audio Glättung"
+			},
+			"en-us": {
+				"ui_HEADER_MAIN": "<u><h4>Main</h4></u>",
+				"ui_HEADER_AUDIO": "<u><h4>Audio</h4></u>",
+				"ui_HEADER_ICUE": "<u><h4>iCUE LED Effects</h4></u>",
+				"ui_spacer1": "=============================",
+				"ui_spacer2": "--------------------------------------------------",
+				"ui_ink_color": "Ink Color",
+				"ui_paper_color": "Back Color",
+				"ui_icue_area_blur": "Blur / Smoothing",
+				"ui_icue_area_decay": "Color Decay",
+				"ui_icue_area_height": "Projection Height",
+				"ui_icue_area_preview": "Show Preview",
+				"ui_icue_area_width": "Projection Width",
+				"ui_icue_area_xoff": "Projection X Offset",
+				"ui_icue_area_yoff": "Projection Y Offset",
+				"ui_icue_main_color": "iCUE Color",
+				"ui_icue_mode": "iCUE Mode",
+				"ui_icue_mode_0": "Off",
+				"ui_icue_mode_1": "Projection",
+				"ui_icue_mode_2": "Color",
+				"ui_speed": "Change speed",
+				"ui_blur_strength": "Blur Shader",
+				"ui_strength": "ChromaticA Shader",
+				"ui_shade_contrast": "Contrast",
+				"ui_audio_multiplier": "Audio Influence",
+				"ui_audio_smoothing": "Audio Smoothing"
+			}
+		},
 		"properties": {
 			"schemecolor" : {
-				"order": 0,
+				"order": -1,
 				"text": "ui_browse_properties_scheme_color",
 				"type": "color",
 				"value": "0 0 0"
 			},
-			"icue_mode" : {
-				"order": 10,
-				"text": "ui_icue_mode",
+			"spacer_00" : {
+				"order": 0,
+				"text": "ui_spacer1",
+				"type": "text"
+			},
+			"HEADER_MAIN" : {
+				"order": 1,
+				"text": "ui_HEADER_MAIN",
 				"type": "bool",
-				"value": true
+				"value": false
+			},
+			"spacer_01" : {
+				"condition": "HEADER_MAIN.value",
+				"order": 2,
+				"text": "ui_spacer2",
+				"type": "text"
+			},
+			"ink_color" : {
+				"condition": "HEADER_MAIN.value",
+				"order": 3,
+				"text": "ui_ink_color",
+				"type": "color",
+				"value": "0.1 0.1 0.1"
+			},
+			"paper_color" : {
+				"condition": "HEADER_MAIN.value",
+				"order": 4,
+				"text": "ui_paper_color",
+				"type": "color",
+				"value": "1 0.9 0.8"
+			},
+			"shade_contrast" : {
+				"condition": "HEADER_MAIN.value",
+				"editable": false,
+				"max": 100,
+				"min": 1,
+				"order": 5,
+				"text": "ui_shade_contrast",
+				"type": "slider",
+				"value": 20
+			},
+			"speed" : {
+				"condition": "HEADER_MAIN.value",
+				"editable": false,
+				"max": 20,
+				"min": 1,
+				"order": 6,
+				"text": "ui_speed",
+				"type": "slider",
+				"value": 7
+			},
+			"blur_strength" : {
+				"condition": "HEADER_MAIN.value",
+				"editable": false,
+				"max": 10,
+				"min": 1,
+				"order": 7,
+				"text": "ui_blur_strength",
+				"type": "slider",
+				"value": 5
+			},
+			"strength" : {
+				"condition": "HEADER_MAIN.value",
+				"editable": false,
+				"max": 20,
+				"min": 0,
+				"order": 8,
+				"text": "ui_strength",
+				"type": "slider",
+				"value": 5
+			},
+			"spacer_02" : {
+				"condition": "HEADER_MAIN.value",
+				"order": 9,
+				"text": "ui_spacer1",
+				"type": "text"
+			},
+			"HEADER_AUDIO" : {
+				"order": 10,
+				"text": "ui_HEADER_AUDIO",
+				"type": "bool",
+				"value": false
+			},
+			"spacer_03" : {
+				"condition": "HEADER_AUDIO.value",
+				"order": 11,
+				"text": "ui_spacer2",
+				"type": "text"
+			},
+			"audio_multiplier" : {
+				"condition": "HEADER_AUDIO.value",
+				"editable": true,
+				"max": 20,
+				"min": 1,
+				"order": 12,
+				"text": "ui_audio_multiplier",
+				"type": "slider",
+				"value": 10
+			},
+			"audio_smoothing" : {
+				"condition": "HEADER_AUDIO.value",
+				"editable": false,
+				"max": 95,
+				"min": 5,
+				"order": 13,
+				"text": "ui_audio_smoothing",
+				"type": "slider",
+				"value": 70
+			},
+			"spacer_04" : {
+				"condition": "HEADER_AUDIO.value",
+				"order": 14,
+				"text": "ui_spacer1",
+				"type": "text"
+			},
+			"HEADER_ICUE" : {
+				"order": 15,
+				"text": "ui_HEADER_ICUE",
+				"type": "bool",
+				"value": false
+			},
+			"spacer_05" : {
+				"condition": "HEADER_ICUE.value",
+				"order": 16,
+				"text": "ui_spacer2",
+				"type": "text"
+			},
+			"icue_mode" : {
+				"condition": "HEADER_ICUE.value",
+				"order": 17,
+				"text": "ui_icue_mode",
+				"type": "combo",
+				"options": [
+					{
+						"label": "ui_icue_mode_0",
+						"value": 0
+					},
+					{
+						"label": "ui_icue_mode_1",
+						"value": 1
+					},
+					{
+						"label": "ui_icue_mode_2",
+						"value": 2
+					}
+				],
+				"value": 0
 			},
 			"icue_area_xoff" : {
-				"condition": "icue_mode.value",
+				"condition": "HEADER_ICUE.value && icue_mode.value == 1",
 				"editable": false,
 				"max": 100,
 				"min": 5,
-				"order": 20,
+				"order": 18,
 				"text": "ui_icue_area_xoff",
 				"type": "slider",
 				"value": 50
 			},
 			"icue_area_yoff" : {
-				"condition": "icue_mode.value",
+				"condition": "HEADER_ICUE.value && icue_mode.value == 1",
 				"editable": false,
 				"max": 100,
 				"min": 5,
-				"order": 30,
+				"order": 19,
 				"text": "ui_icue_area_yoff",
 				"type": "slider",
 				"value": 90
 			},
 			"icue_area_width" : {
-				"condition": "icue_mode.value",
+				"condition": "HEADER_ICUE.value && icue_mode.value == 1",
 				"editable": false,
 				"max": 100,
 				"min": 5,
-				"order": 40,
+				"order": 20,
 				"text": "ui_icue_area_width",
 				"type": "slider",
 				"value": 75
 			},
 			"icue_area_height" : {
-				"condition": "icue_mode.value",
+				"condition": "HEADER_ICUE.value && icue_mode.value == 1",
 				"editable": false,
 				"max": 100,
 				"min": 5,
-				"order": 50,
+				"order": 21,
 				"text": "ui_icue_area_height",
 				"type": "slider",
 				"value": 30
 			},
 			"icue_area_blur" : {
-				"condition": "icue_mode.value",
+				"condition": "HEADER_ICUE.value && icue_mode.value == 1",
 				"editable": false,
 				"max": 5,
 				"min": 0,
-				"order": 60,
+				"order": 22,
 				"text": "ui_icue_area_blur",
 				"type": "slider",
 				"value": 1
 			},
 			"icue_area_decay" : {
-				"condition": "icue_mode.value",
+				"condition": "HEADER_ICUE.value && icue_mode.value == 1",
 				"editable": false,
 				"max": 100,
 				"min": 0,
-				"order": 70,
+				"order": 23,
 				"text": "ui_icue_area_decay",
 				"type": "slider",
 				"value": 20
 			},
+			"icue_main_color" : {
+				"condition": "HEADER_ICUE.value && icue_mode.value == 2",
+				"order": 24,
+				"text": "ui_icue_main_color",
+				"type": "color",
+				"value": "0 0.8 0"
+			},
 			"icue_area_preview" : {
-				"condition": "icue_mode.value",
-				"order": 187,
+				"condition": "HEADER_ICUE.value && icue_mode.value == 1",
+				"order": 25,
 				"text": "ui_icue_area_preview",
 				"type": "bool",
 				"value": false
 			},
-			"speed" : {
-				"editable": false,
-				"max": 20,
-				"min": 1,
-				"order": 80,
-				"text": "ui_speed",
-				"type": "slider",
-				"value": 7
-			},
-			"shadeContrast" : {
-				"editable": false,
-				"max": 1000,
-				"min": 1,
-				"order": 90,
-				"text": "ui_shadeContrast",
-				"type": "slider",
-				"value": 20
-			},
-			"audio_multiplier" : {
-				"editable": true,
-				"max": 100,
-				"min": 1,
-				"order": 100,
-				"text": "ui_audio_multiplier",
-				"type": "slider",
-				"value": 35
-			},
-			"ink_color" : {
-				"order": 0,
-				"text": "ui_browse_properties_scheme_color",
-				"type": "color",
-				"value": "0 0 0"
-			},
-			"paper_color" : {
-				"order": 0,
-				"text": "ui_browse_properties_scheme_color",
-				"type": "color",
-				"value": "0 0 0"
+			"spacer_06" : {
+				"condition": "HEADER_ICUE.value",
+				"order": 26,
+				"text": "ui_spacer1",
+				"type": "text"
 			}
 		},
 		"supportsaudioprocessing": true
@@ -130,7 +302,7 @@
 	"tags": [
 		"Abstract"
 	],
-	"title": "Rorschach Animated",
+	"title": "ReactiveInk (Rorschach)",
 	"type": "web",
 	"visibility": "public"
 }
