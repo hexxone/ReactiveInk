@@ -1,5 +1,5 @@
 /**
- * @author D.Thiele @https://hexxon.me
+ * @author D.Thiele @https://hexx.one
  */
 
 THREE.GlowShader = {
@@ -15,7 +15,8 @@ THREE.GlowShader = {
 
     // Default vertex shader
     vertexShader: `
-    precision mediump float;
+    precision lowp float;
+    //shaderquality
     
     varying vec2 vUv;
     
@@ -27,7 +28,7 @@ THREE.GlowShader = {
 
     // Simple Chromatic Aberration Shader
     fragmentShader: `
-    precision mediump float;
+    precision lowp float;
 
     varying vec2 vUv;
 

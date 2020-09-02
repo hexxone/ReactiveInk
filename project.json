@@ -1,7 +1,7 @@
 {
 	"approved": true,
 	"contentrating": "Everyone",
-	"description" : "This Wallpaper is using WebGL, WebAudio and a simple shader to get some Fr",
+	"description": "This Wallpaper is using WebGL, WebAudio and a simple shader to get some Fr",
 	"file": "index.html",
 	"general": {
 		"localization": {
@@ -89,14 +89,14 @@
 				"order": 3,
 				"text": "ui_ink_color",
 				"type": "color",
-				"value": "0.1 0.1 0.1"
+				"value": "0.9333333333333333 0.30196078431372547 0.1803921568627451"
 			},
 			"paper_color" : {
 				"condition": "HEADER_MAIN.value",
 				"order": 4,
 				"text": "ui_paper_color",
 				"type": "color",
-				"value": "1 0.9 0.8"
+				"value": "0.08627450980392157 0.08627450980392157 0.09411764705882353"
 			},
 			"shade_contrast" : {
 				"condition": "HEADER_MAIN.value",
@@ -106,7 +106,7 @@
 				"order": 5,
 				"text": "ui_shade_contrast",
 				"type": "slider",
-				"value": 20
+				"value": 6
 			},
 			"speed" : {
 				"condition": "HEADER_MAIN.value",
@@ -122,37 +122,83 @@
 				"condition": "HEADER_MAIN.value",
 				"editable": false,
 				"max": 10,
-				"min": 1,
+				"min": 0,
 				"order": 7,
 				"text": "ui_blur_strength",
 				"type": "slider",
-				"value": 5
+				"value": 0
 			},
 			"strength" : {
 				"condition": "HEADER_MAIN.value",
 				"editable": false,
-				"max": 20,
+				"max": 30,
 				"min": 0,
 				"order": 8,
 				"text": "ui_strength",
 				"type": "slider",
-				"value": 5
+				"value": 10
+			},
+			"shader_quality" : {
+				"condition": "HEADER_MAIN.value",
+				"order": 9,
+				"text": "Shader Quality",
+				"type": "combo",
+				"options": [
+					{
+						"label": "High",
+						"value": "high"
+					},
+					{
+						"label": "Medium",
+						"value": "medium"
+					},
+					{
+						"label": "Low",
+						"value": "low"
+					}
+				],
+				"value": "medium"
+			},
+			"stats_option" : {
+				"condition": "HEADER_MAIN.value",
+				"options": [
+					{
+						"label": "None",
+						"value": -1
+					},
+					{
+						"label": "FPS",
+						"value": 0
+					},
+					{
+						"label": "MS",
+						"value": 1
+					},
+					{
+						"label": "MB",
+						"value": 2
+					}
+				],
+				"order": 10,
+				"text": "Stats",
+				"type": "combo",
+				"value": -1
 			},
 			"spacer_02" : {
 				"condition": "HEADER_MAIN.value",
-				"order": 9,
+				"order": 11,
 				"text": "ui_spacer1",
 				"type": "text"
 			},
 			"HEADER_AUDIO" : {
-				"order": 10,
+				"order": 12,
 				"text": "ui_HEADER_AUDIO",
 				"type": "bool",
 				"value": false
 			},
 			"spacer_03" : {
 				"condition": "HEADER_AUDIO.value",
-				"order": 11,
+				"order": 13,
 				"text": "ui_spacer2",
 				"type": "text"
 			},
@@ -161,7 +207,7 @@
 				"editable": true,
 				"max": 20,
 				"min": 1,
-				"order": 12,
+				"order": 14,
 				"text": "ui_audio_multiplier",
 				"type": "slider",
 				"value": 10
@@ -171,32 +217,32 @@
 				"editable": false,
 				"max": 95,
 				"min": 5,
-				"order": 13,
+				"order": 15,
 				"text": "ui_audio_smoothing",
 				"type": "slider",
 				"value": 70
 			},
 			"spacer_04" : {
 				"condition": "HEADER_AUDIO.value",
-				"order": 14,
+				"order": 16,
 				"text": "ui_spacer1",
 				"type": "text"
 			},
 			"HEADER_ICUE" : {
-				"order": 15,
+				"order": 17,
 				"text": "ui_HEADER_ICUE",
 				"type": "bool",
 				"value": false
 			},
 			"spacer_05" : {
 				"condition": "HEADER_ICUE.value",
-				"order": 16,
+				"order": 18,
 				"text": "ui_spacer2",
 				"type": "text"
 			},
 			"icue_mode" : {
 				"condition": "HEADER_ICUE.value",
-				"order": 17,
+				"order": 19,
 				"text": "ui_icue_mode",
 				"type": "combo",
 				"options": [
@@ -220,7 +266,7 @@
 				"editable": false,
 				"max": 100,
 				"min": 5,
-				"order": 18,
+				"order": 20,
 				"text": "ui_icue_area_xoff",
 				"type": "slider",
 				"value": 50
@@ -230,7 +276,7 @@
 				"editable": false,
 				"max": 100,
 				"min": 5,
-				"order": 19,
+				"order": 21,
 				"text": "ui_icue_area_yoff",
 				"type": "slider",
 				"value": 90
@@ -240,7 +286,7 @@
 				"editable": false,
 				"max": 100,
 				"min": 5,
-				"order": 20,
+				"order": 22,
 				"text": "ui_icue_area_width",
 				"type": "slider",
 				"value": 75
@@ -250,7 +296,7 @@
 				"editable": false,
 				"max": 100,
 				"min": 5,
-				"order": 21,
+				"order": 23,
 				"text": "ui_icue_area_height",
 				"type": "slider",
 				"value": 30
@@ -260,7 +306,7 @@
 				"editable": false,
 				"max": 5,
 				"min": 0,
-				"order": 22,
+				"order": 24,
 				"text": "ui_icue_area_blur",
 				"type": "slider",
 				"value": 1
@@ -270,28 +316,28 @@
 				"editable": false,
 				"max": 100,
 				"min": 0,
-				"order": 23,
+				"order": 25,
 				"text": "ui_icue_area_decay",
 				"type": "slider",
 				"value": 20
 			},
 			"icue_main_color" : {
 				"condition": "HEADER_ICUE.value && icue_mode.value == 2",
-				"order": 24,
+				"order": 26,
 				"text": "ui_icue_main_color",
 				"type": "color",
 				"value": "0 0.8 0"
 			},
 			"icue_area_preview" : {
 				"condition": "HEADER_ICUE.value && icue_mode.value == 1",
-				"order": 25,
+				"order": 27,
 				"text": "ui_icue_area_preview",
 				"type": "bool",
 				"value": false
 			},
 			"spacer_06" : {
 				"condition": "HEADER_ICUE.value",
-				"order": 26,
+				"order": 28,
 				"text": "ui_spacer1",
 				"type": "text"
 			}
