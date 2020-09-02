@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1">
-  
-    <title>ReactiveInk</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-  
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/stats.js"></script>
-	
-    <script type="text/javascript" src="js/three.min.js"></script>
-    <script type="text/javascript" src="js/three/shader/CopyShader.js"></script>
-    <script type="text/javascript" src="js/three/postprocessing/EffectComposer.js"></script>
-    <script type="text/javascript" src="js/three/postprocessing/RenderPass.js"></script>
-    <script type="text/javascript" src="js/three/postprocessing/ShaderPass.js"></script>
-    <script type="text/javascript" src="js/three/shader/RorSchader.js"></script>
-    <script type="text/javascript" src="js/three/shader/ChromaticShader.js"></script>
-    <script type="text/javascript" src="js/three/shader/GlowShader.js"></script>
-  
-    <script type="text/javascript" src="js/detector.js"></script>
-    <script type="text/javascript" src="js/weas.js"></script>
-    <script type="text/javascript" src="js/weicue.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/wewwa.js"></script>
-  </head>
-  <body>
-    <div id="renderContainer">
-      <canvas id="mainCvs"></canvas>
-    </div>
-    <div id="icueholder">
-      <img id="icuelogo" src="./img/icue.png" />
-      <div id="icuetext"></div>
-    </div>
-  </body>
+
+<head>
+  <!-- Meta and style stuff -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1">
+  <title>ReactiveInk</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <!-- load mostly external libraries and effects -->
+  <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="js/three/three.min.js"></script>
+  <script type="text/javascript" src="js/three/shader/ChromaticShader.js"></script>
+  <script type="text/javascript" src="js/three/shader/CopyShader.js"></script>
+  <script type="text/javascript" src="js/three/shader/GlowShader.js"></script>
+  <script type="text/javascript" src="js/three/shader/RorSchader.js"></script>
+  <script type="text/javascript" src="js/three/postprocessing/EffectComposer.js"></script>
+  <script type="text/javascript" src="js/three/postprocessing/RenderPass.js"></script>
+  <script type="text/javascript" src="js/three/postprocessing/ShaderPass.js"></script>
+  <!-- load custom utils -->
+  <script type="text/javascript" src="we_utils/Detector.js"></script>
+  <script type="text/javascript" src="we_utils/ReloadHelper.js"></script>
+  <script type="text/javascript" src="we_utils/ShaderQuality.js"></script>
+  <script type="text/javascript" src="we_utils/Stats.js"></script>
+  <script type="text/javascript" src="we_utils/WarnHelper.js"></script>
+  <script type="text/javascript" src="we_utils/weas.js"></script>
+  <script type="text/javascript" src="we_utils/weicue.js"></script>
+  <script type="text/javascript" src="we_utils/wewwa.js"></script>
+  <!-- load more custom scripts -->
+  <script type="text/javascript" src="js/reactiveInk.js"></script>
+</head>
+
+<body>
+  <div id="renderContainer">
+    <canvas id="mainCvs"></canvas>
+  </div>
+</body>
+
 </html>

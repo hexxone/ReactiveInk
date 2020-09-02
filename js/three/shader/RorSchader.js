@@ -1,5 +1,5 @@
 /**
- * @author D.Thiele @https://hexxon.me
+ * @author D.Thiele @https://hexx.one
  * 
  * converted from: https://www.shadertoy.com/view/Md33zB
  */
@@ -9,10 +9,9 @@ THREE.RorSchader = {
     shaderID: "rorSchader",
 
     uniforms: {
-		tDiffuse: { value: null },
+        tDiffuse: { value: null },
         iTime: { value: 1.0 },
         timeBoost: { value: 0.1 },
-        iResolution: { value: new THREE.Vector2(1, 1) },
         inkColor: { value: new THREE.Vector3(0.01, 0.01, 0.1) },
         paperColor: { value: new THREE.Vector3(1, 0.9, 0.8) },
         speed: { value: 0.0075 },
@@ -21,7 +20,8 @@ THREE.RorSchader = {
 
     // Default vertex shader
     vertexShader: `
-    precision mediump float;
+    precision lowp float;
+    //shaderquality
     
     varying vec2 vUv;
     
@@ -35,12 +35,12 @@ THREE.RorSchader = {
     // Combined with a second layer of noise to produce an ink on paper effect
     // 3D simplex noise taken from: https://www.shadertoy.com/view/XsX3zB
     fragmentShader: `
-    precision mediump float;
+    precision lowp float;
+    //shaderquality
     
     uniform float iTime;
     uniform float timeBoost;
 	uniform sampler2D tDiffuse;
-    uniform vec2 iResolution;
     uniform vec3 inkColor;
     uniform vec3 paperColor;
     uniform float speed;
@@ -109,7 +109,7 @@ THREE.RorSchader = {
     }
     
     void main() {
-        vec2 uv = 1.0 - gl_FragCoord.xy / iResolution.xy;
+        vec2 uv = 1.0 - vUv;
         vec2 coord = 1.0 - uv * 2.0;
         uv.x = 1.0 - abs(1.0 - uv.x * 2.0);
         vec3 p = vec3(uv.x, uv.y, (iTime + timeBoost) * speed);

@@ -1,5 +1,5 @@
 /**
- * @author D.Thiele @https://hexxon.me
+ * @author D.Thiele @https://hexx.one
  */
 
 THREE.ChromaticShader = {
@@ -14,7 +14,8 @@ THREE.ChromaticShader = {
 
     // Default vertex shader
     vertexShader: `
-    precision mediump float;
+    precision lowp float;
+    //shaderquality
     
     varying vec2 vUv;
     
@@ -26,7 +27,8 @@ THREE.ChromaticShader = {
 
     // Simple Chromatic Aberration Shader
     fragmentShader: `
-    precision mediump float;
+    precision lowp float;
+    //shaderquality
       
 	uniform sampler2D tDiffuse;
     uniform vec2 iResolution;

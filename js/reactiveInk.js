@@ -9,7 +9,11 @@
  * for Wallpaper Engine (https://steamcommunity.com/app/431960)
  * 
  * @author
- * by Hexxon 			(https://hexxon.me)
+ * by Hexxon 			(https://hexx.one)
+ * 
+ * Todo:
+ * - Fix Project settings 
+ * - Update Main Repos
  * 
 */
 
@@ -31,7 +35,10 @@ var reactiveInk = {
 		shade_contrast: 2,
 		audio_multiplier: 2,
 		ink_color: "0.1 0.1 0.1",
-		paper_color: "1 0.9 0.8"
+		paper_color: "1 0.9 0.8",
+		shader_quality: "medium",
+		stats_option: -1,
+		seizure_warning: true
 	},
 	// fps limit, by wallpaper engine
 	fps: 60,
@@ -39,6 +46,8 @@ var reactiveInk = {
 	isWebContext: false,
 	// started yet?
 	initialized: false,
+	// re-init timeout
+	resetTimeout: null,
 	// paused?
 	PAUSED: false,
 	// context
@@ -72,9 +81,12 @@ var reactiveInk = {
 
 		var self = reactiveInk;
 		var sett = self.settings;
+		var reInitFlag = false;
+
 		var settStorage = [sett, weas.settings, weicue.settings];
 
 		var _ignore = ["audioprocessing"];
+		var _reInit = ["strength", "blur_strength", "shader_quality"];
 
 		// loop all settings for updated values
 		for (var setting in props) {
@@ -90,11 +102,15 @@ var reactiveInk = {
 				if (storage[setting] != null) {
 					// save b4
 					found = true;
+					var b4Setting = storage[setting];
 					// apply prop value
 					if (prop.type == "bool")
 						storage[setting] = prop.value == true;
 					else
 						storage[setting] = prop.value;
+
+					// set re-init flag if value changed and included in list
+					reInitFlag = reInitFlag || b4Setting != storage[setting] && _reInit.includes(setting);
 				}
 			}
 			// invalid?
@@ -103,6 +119,8 @@ var reactiveInk = {
 
 		// update preview visbility after setting possibly changed
 		weicue.updatePreview();
+
+		return reInitFlag;
 	},
 
 	///////////////////////////////////////////////
@@ -110,21 +128,68 @@ var reactiveInk = {
 	///////////////////////////////////////////////
 
 	initFirst: function () {
-		window.addEventListener("resize", (event) => {
-			if (!this.initialized) return;
-			this.camera.aspect = window.innerWidth / window.innerHeight;
-			this.camera.updateProjectionMatrix();
-			this.renderer.setSize(window.innerWidth, window.innerHeight);
-		}, false);
+		var self = reactiveInk;
+		var sett = self.settings;
 
 		// real initializer
-		this.initSystem();
+		self.initSystem();
+
+		// change handler only after init, due to Chrome bug
+		window.addEventListener("resize", (event) => {
+			if (!self.initialized) return;
+			self.camera.aspect = window.innerWidth / window.innerHeight;
+			self.camera.updateProjectionMatrix();
+			self.renderer.setSize(window.innerWidth, window.innerHeight);
+		}, false);
+
+		// start fade-in wrapper
+		var initWrap = () => {
+			$("#mainCvs").addClass("show");
+		};
+
+		// show seizure warning before initializing?
+		if (!sett.seizure_warning) initWrap();
+		else WarnHelper.Show(initWrap);
+	},
+
+	// re-initialize the system
+	reInitSystem: function () {
+		print("re-initializing...");
+		// Lifetime variables
+		var self = reactiveInk;
+
+		// hide reload indicator
+		ReloadHelper.Hide();
+		// kill stats
+		if (self.stats) self.stats.dispose();
+		self.stats = null;
+		// kill shaders
+		self.blurPassX = null;
+		self.blurPassY = null;
+		self.chromaPass = null;
+		// kill shader processor
+		if (self.composer) self.composer.reset();
+		self.composer = null;
+		// kill frame animation and webgl
+		self.renderer.setAnimationLoop(null);
+		self.renderer.forceContextLoss();
+		// recreate webgl canvas
+		self.container.removeChild(self.mainCanvas);
+		var mainCvs = document.createElement("canvas");
+		mainCvs.id = "mainCvs";
+		self.container.appendChild(mainCvs);
+		// actual re-init
+		self.initSystem();
+		// show again
+		$("#mainCvs").addClass("show");
 	},
 
 	// initialize the geometric & grpahics system
 	// => starts rendering loop afterwards
 	initSystem: function () {
+
 		print("initializing...");
+
 		// No WebGL ? o.O
 		if (!Detector.webgl) {
 			Detector.addGetWebGLMessage();
@@ -132,6 +197,10 @@ var reactiveInk = {
 		}
 		var self = this;
 		var sett = self.settings;
+
+		// inject shader quality
+		ShaderQuality.Inject(sett.shader_quality, [THREE.RorSchader, THREE.GlowShader, THREE.ChromaticShader])
+
 		// Lifetime variables
 		self.fpsThreshold = 0;
 		// statistics
@@ -165,7 +234,7 @@ var reactiveInk = {
 		});
 		self.renderer.setSize(window.innerWidth, window.innerHeight);
 
-		/// effect composer
+		// effect composer
 		self.composer = new THREE.EffectComposer(self.renderer);
 		self.composer.addPass(new THREE.RenderPass(self.scene, self.camera, null, 0x000000, 1));
 
@@ -174,15 +243,19 @@ var reactiveInk = {
 		self.composer.addPass(self.rorPass);
 
 		// Glow pass (transformer)
-		self.blurPassX = new THREE.ShaderPass(THREE.GlowShader);
-		self.blurPassY = new THREE.ShaderPass(THREE.GlowShader);
-		self.composer.addPass(self.blurPassX);
-		self.composer.addPass(self.blurPassY);
+		if (sett.blur_strength > 0) {
+			self.blurPassX = new THREE.ShaderPass(THREE.GlowShader);
+			self.blurPassY = new THREE.ShaderPass(THREE.GlowShader);
+			self.composer.addPass(self.blurPassX);
+			self.composer.addPass(self.blurPassY);
+		}
 
 		// Chroma Pass (transformer)
-		self.chromaPass = new THREE.ShaderPass(THREE.ChromaticShader);
-		self.chromaPass.renderToScreen = true;
-		self.composer.addPass(self.chromaPass);
+		if (sett.strength > 0) {
+			self.chromaPass = new THREE.ShaderPass(THREE.ChromaticShader);
+			self.chromaPass.renderToScreen = true;
+			self.composer.addPass(self.chromaPass);
+		}
 
 		// create some light
 		self.light = new THREE.HemisphereLight(0xeeeeee, 0x888888, 1);
@@ -192,9 +265,7 @@ var reactiveInk = {
 		// init plugins
 		weicue.init(self.mainCanvas);
 		// start rendering
-		self.renderer.setAnimationLoop(self.renderLoop);
-		// fadein
-		$("#renderContainer").fadeIn(5000);
+		self.renderer.setAnimationLoop(reactiveInk.renderLoop);
 		// print
 		print("startup complete.", true);
 	},
@@ -222,8 +293,7 @@ var reactiveInk = {
 			var delta = ellapsed / fpsThreshMin;
 			self.renderFrame(delta, ellapsed);
 		} catch (ex) {
-			print("renderLoop exception: ");
-			print(ex);
+			print("renderLoop exception: " + ex.message);
 		}
 	},
 	// render a single frame with the given delta Multiplicator
@@ -257,11 +327,15 @@ var reactiveInk = {
 		self.rorPass.uniforms.inkColor.value = new THREE.Vector3(iCol[0], iCol[1], iCol[2]);
 		self.rorPass.uniforms.paperColor.value = new THREE.Vector3(pCol[0], pCol[1], pCol[2]);
 		// apply blur
-		var bs = Math.max(0.1, sett.blur_strength - bassIntensity / 20) / 10;
-		self.blurPassX.uniforms.u_dir.value = new THREE.Vector2(bs, 0);
-		self.blurPassY.uniforms.u_dir.value = new THREE.Vector2(0, bs);
+		if(sett.blur_strength > 0) {
+			var bs = Math.max(0.1, sett.blur_strength - bassIntensity / 20) / 10;
+			self.blurPassX.uniforms.u_dir.value = new THREE.Vector2(bs, 0);
+			self.blurPassY.uniforms.u_dir.value = new THREE.Vector2(0, bs);
+		}
 		// apply chroma
-		self.chromaPass.uniforms.strength.value = sett.strength * bassIntensity;
+		if (sett.strength > 0) {
+			self.chromaPass.uniforms.strength.value = sett.strength * bassIntensity;
+		}
 		// canvas render
 		self.composer.render(ellapsed);
 		// ICUE PROCESSING
@@ -285,11 +359,18 @@ window.wallpaperPropertyListener = {
 		if (props.fps) reactiveInk.fps = props.fps;
 	},
 	applyUserProperties: (props) => {
-		reactiveInk.applyCustomProps(props);
+		var reInit = reactiveInk.applyCustomProps(props);
 		// very first initialization
 		if (!reactiveInk.initialized) {
 			reactiveInk.initialized = true;
 			$(() => reactiveInk.initFirst());
+		}
+		else if (reInit) {
+			print("got reInit-flag from applying settings!", true);
+			if (reactiveInk.resetTimeout) clearTimeout(reactiveInk.resetTimeout);
+			reactiveInk.resetTimeout = setTimeout(reactiveInk.reInitSystem, 3000);
+			ReloadHelper.Show();
+			$("#mainCvs").removeClass("show");
 		}
 	},
 	setPaused: (isPaused) => {
