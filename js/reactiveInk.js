@@ -9,7 +9,7 @@
  * for Wallpaper Engine (https://steamcommunity.com/app/431960)
  * 
  * @author
- * by Hexxon 			(https://hexx.one)
+ * by hexxone 			(https://hexx.one)
  * 
  * Todo:
  * - Fix Project settings 
