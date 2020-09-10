@@ -26,13 +26,19 @@
         "ui_icue_mode_1": "Projektion",
         "ui_icue_mode_2": "Farbe",
         "ui_speed": "Geschwindigkeit",
-        "ui_blur_strength": "Blur Shader",
-        "ui_strength": "ChromaticA Shader",
-        "ui_shader_quality": "Shader Qualität",
+        "ui_blur_strength": "Blur Filter",
+        "ui_strength": "ChromaticA Filter",
+        "ui_shader_quality": "Filter Qualität",
         "ui_shader_quality_3": "Hoch",
         "ui_shader_quality_2": "Medium",
         "ui_shader_quality_1": "Niedrig",
+        "ui_stats_option": "Statistiken",
+        "ui_stats_option_nan": "Keine",
+        "ui_stats_option_0": "Bilder pro Sekunde",
+        "ui_stats_option_1": "Millisekunden",
+        "ui_stats_option_2": "MegaByte",
         "ui_shade_contrast": "Kontrast",
+        "ui_seizure_warning": "Epilepsie-Warnung",
         "ui_audio_multiplier": "Audio Einfluss",
         "ui_audio_smoothing": "Audio Glättung"
       },
@@ -65,7 +71,13 @@
         "ui_shader_quality_1": "Low",
         "ui_shade_contrast": "Contrast",
         "ui_audio_multiplier": "Audio Influence",
-        "ui_audio_smoothing": "Audio Smoothing"
+        "ui_audio_smoothing": "Audio Smoothing",
+        "ui_stats_option": "Statistics",
+        "ui_stats_option_nan": "None",
+        "ui_stats_option_0": "Images per second",
+        "ui_stats_option_1": "Milliseconds",
+        "ui_stats_option_2": "MegaByte",
+        "ui_seizure_warning": "Epilepsy Warning"
       },
       "es-es": {
         "ui_HEADER_MAIN": "<u><h4>general</h4></u>",
@@ -96,7 +108,13 @@
         "ui_shader_quality_1": "Bajo",
         "ui_shade_contrast": "Contraste",
         "ui_audio_multiplier": "Influencia del audio",
-        "ui_audio_smoothing": "Suavizado de audio"
+        "ui_audio_smoothing": "Suavizado de audio",
+        "ui_stats_option": "Estadísticas",
+        "ui_stats_option_nan": "Ninguno",
+        "ui_stats_option_0": "cuadros por segundo",
+        "ui_stats_option_1": "Milisegundos",
+        "ui_stats_option_2": "MegaByte",
+        "ui_seizure_warning": "Advertencia de epilepsia"
       },
       "fr-fr": {
         "ui_HEADER_MAIN": "<u><h4>général</h4></u>",
@@ -127,7 +145,13 @@
         "ui_shader_quality_1": "Faible",
         "ui_shade_contrast": "Contraste",
         "ui_audio_multiplier": "Influence du son",
-        "ui_audio_smoothing": "Lissage audio"
+        "ui_audio_smoothing": "Lissage audio",
+        "ui_stats_option": "Statistiques",
+        "ui_stats_option_nan": "Aucune",
+        "ui_stats_option_0": "images par seconde",
+        "ui_stats_option_1": "Millisecondes",
+        "ui_stats_option_2": "MegaByte",
+        "ui_seizure_warning": "Alerte à l'épilepsie"
       },
       "it-it": {
         "ui_HEADER_MAIN": "<u><h4>generale</h4></u></u>",
@@ -158,7 +182,13 @@
         "ui_audio_multiplier": "Influenza audio",
         "ui_audio_smoothing": "Lisciatura audio",
         "ui_blur_strength": "sfocatura shader",
-        "ui_shader_quality": "Qualità degli ombreggiatori"
+        "ui_shader_quality": "Qualità degli ombreggiatori",
+        "ui_stats_option": "Statistiche",
+        "ui_stats_option_nan": "Nessuno",
+        "ui_stats_option_0": "fotogrammi al secondo",
+        "ui_stats_option_1": "Millisecondi",
+        "ui_stats_option_2": "MegaByte",
+        "ui_seizure_warning": "Avviso di epilessia"
       },
       "ja-jp": {
         "ui_HEADER_MAIN": "<u><h4>一般</h4></u>。",
@@ -187,7 +217,15 @@
         "ui_shader_quality_2": "中型",
         "ui_shader_quality_1": "低",
         "ui_shade_contrast": "コントラスト",
-        "ui_audio_multiplier": "オーディオの影響"
+        "ui_audio_multiplier": "オーディオの影響",
+        "ui_shader_quality": "フィルターの品質",
+        "ui_stats_option": "統計情報",
+        "ui_stats_option_nan": "一人もいない",
+        "ui_stats_option_0": "毎秒フレーム",
+        "ui_stats_option_1": "ミリ秒",
+        "ui_stats_option_2": "メガバイト",
+        "ui_seizure_warning": "てんかんの警告",
+        "ui_audio_smoothing": "オーディオのスムージング"
       },
       "nl-nl": {
         "ui_HEADER_MAIN": "<u><h4>algemeen</h4></u>",
@@ -218,7 +256,13 @@
         "ui_shader_quality_1": "Laag",
         "ui_shade_contrast": "Contrast",
         "ui_audio_multiplier": "Audio-invloed",
-        "ui_audio_smoothing": "Audio-afvlakking"
+        "ui_audio_smoothing": "Audio-afvlakking",
+        "ui_stats_option": "Statistieken",
+        "ui_stats_option_nan": "Geen",
+        "ui_stats_option_0": "kaders per seconde",
+        "ui_stats_option_1": "Milliseconden",
+        "ui_stats_option_2": "MegaByte",
+        "ui_seizure_warning": "Epilepsiewaarschuwing"
       },
       "pl-pl": {
         "ui_HEADER_MAIN": "<u><h4></h4></u></u>",
@@ -249,11 +293,50 @@
         "ui_shader_quality_1": "Niski poziom",
         "ui_shade_contrast": "Kontrast",
         "ui_audio_multiplier": "Wpływ audio",
-        "ui_audio_smoothing": "Wygładzanie dźwięku"
+        "ui_audio_smoothing": "Wygładzanie dźwięku",
+        "ui_stats_option_nan": "Geen",
+        "ui_stats_option_0": "ramki na sekundę",
+        "ui_stats_option_1": "Milisekundy",
+        "ui_stats_option_2": "MegaBajt",
+        "ui_seizure_warning": "Ostrzeżenie o epilepsji",
+        "ui_stats_option": "Statystyki"
       },
       "ru-ru": {
         "ui_spacer1": "=============================",
-        "ui_spacer2": "--------------------------------------------------"
+        "ui_ink_color": "Atrament",
+        "ui_paper_color": "Справочная информация",
+        "ui_icue_area_blur": "Мягкий фокус",
+        "ui_icue_area_decay": "Потеря цвета",
+        "ui_icue_area_height": "Высота проекции",
+        "ui_icue_area_preview": "Окно предварительного просмотра",
+        "ui_icue_area_width": "Ширина проекции",
+        "ui_icue_area_xoff": "Проекция Х Расстояние",
+        "ui_icue_area_yoff": "Проекция Y Расстояние",
+        "ui_icue_mode": "режим iCUE",
+        "ui_icue_mode_0": "С",
+        "ui_icue_mode_2": "Цвет",
+        "ui_speed": "Скорость",
+        "ui_blur_strength": "шейдер размытия",
+        "ui_strength": "ChromaticA Шейдер",
+        "ui_shader_quality": "качество шейдеров",
+        "ui_shader_quality_3": "Высокий",
+        "ui_shader_quality_2": "Средний",
+        "ui_shader_quality_1": "Низкий уровень",
+        "ui_stats_option": "Статистика",
+        "ui_stats_option_nan": "Нет",
+        "ui_stats_option_0": "кадры в секунду",
+        "ui_stats_option_1": "Миллисекунды",
+        "ui_stats_option_2": "MegaByte",
+        "ui_shade_contrast": "Контраст",
+        "ui_audio_multiplier": "Влияние аудио",
+        "ui_audio_smoothing": "Сглаживание звука",
+        "ui_HEADER_MAIN": "Основные настройки",
+        "ui_HEADER_AUDIO": "Настройки звука",
+        "ui_HEADER_ICUE": "настройки iCUE",
+        "ui_spacer2": "--------------------------------------------------",
+        "ui_icue_main_color": "цвет iCUE",
+        "ui_icue_mode_1": "Проекция",
+        "ui_seizure_warning": "предупреждение об эпилепсии"
       },
       "zh-chs": {
         "ui_icue_mode_0": "来自",
@@ -275,7 +358,22 @@
         "ui_icue_area_xoff": "投影X距离",
         "ui_icue_area_yoff": "投影Y距离",
         "ui_icue_main_color": "iCUE颜色",
-        "ui_icue_mode": "iCUE模式"
+        "ui_icue_mode": "iCUE模式",
+        "ui_HEADER_MAIN": "<u><h4>一般</h4></u>。",
+        "ui_HEADER_AUDIO": "<u><h4>音频</h4></u>。",
+        "ui_HEADER_ICUE": "<u><h4>iCUE LED效果</h4></u>。",
+        "ui_ink_color": "墨水",
+        "ui_paper_color": "背景资料",
+        "ui_icue_area_blur": "柔焦",
+        "ui_icue_area_decay": "失色",
+        "ui_icue_area_height": "投影高度",
+        "ui_stats_option": "统计数据",
+        "ui_stats_option_nan": "无",
+        "ui_stats_option_0": "帧/秒",
+        "ui_stats_option_1": "毫秒",
+        "ui_stats_option_2": "兆字节",
+        "ui_seizure_warning": "癫痫警告",
+        "ui_strength": "对比一下"
       }
     },
     "properties": {
@@ -363,60 +461,67 @@
         "type": "combo",
         "options": [
           {
-            "label": "High",
-            "value": "shader_quality_3"
+            "label": "ui_shader_quality_3",
+            "value": "high"
           },
           {
-            "label": "Medium",
-            "value": "shader_quality_2"
+            "label": "ui_shader_quality_2",
+            "value": "medium"
           },
           {
-            "label": "Low",
-            "value": "shader_quality_1"
+            "label": "ui_shader_quality_1",
+            "value": "low"
           }
         ],
-        "value": "medium"
+        "value": "low"
       },
       "stats_option": {
         "condition": "HEADER_MAIN.value",
         "options": [
           {
-            "label": "None",
+            "label": "ui_stats_option_nan",
             "value": -1
           },
           {
-            "label": "FPS",
+            "label": "ui_stats_option_0",
             "value": 0
           },
           {
-            "label": "MS",
+            "label": "ui_stats_option_1",
             "value": 1
           },
           {
-            "label": "MB",
+            "label": "ui_stats_option_2",
             "value": 2
           }
         ],
         "order": 10,
-        "text": "Stats",
+        "text": "ui_stats_option",
         "type": "combo",
         "value": -1
       },
-      "spacer_02": {
+      "seizure_warning": {
         "condition": "HEADER_MAIN.value",
         "order": 11,
+        "text": "ui_seizure_warning",
+        "type": "bool",
+        "value": false
+      },
+      "spacer_02": {
+        "condition": "HEADER_MAIN.value",
+        "order": 12,
         "text": "ui_spacer1",
         "type": "text"
       },
       "HEADER_AUDIO": {
-        "order": 12,
+        "order": 13,
         "text": "ui_HEADER_AUDIO",
         "type": "bool",
         "value": false
       },
       "spacer_03": {
         "condition": "HEADER_AUDIO.value",
-        "order": 13,
+        "order": 14,
         "text": "ui_spacer2",
         "type": "text"
       },
@@ -425,7 +530,7 @@
         "editable": true,
         "max": 20,
         "min": 1,
-        "order": 14,
+        "order": 15,
         "text": "ui_audio_multiplier",
         "type": "slider",
         "value": 10
@@ -435,32 +540,32 @@
         "editable": false,
         "max": 95,
         "min": 5,
-        "order": 15,
+        "order": 16,
         "text": "ui_audio_smoothing",
         "type": "slider",
         "value": 70
       },
       "spacer_04": {
         "condition": "HEADER_AUDIO.value",
-        "order": 16,
+        "order": 17,
         "text": "ui_spacer1",
         "type": "text"
       },
       "HEADER_ICUE": {
-        "order": 17,
+        "order": 18,
         "text": "ui_HEADER_ICUE",
         "type": "bool",
         "value": false
       },
       "spacer_05": {
         "condition": "HEADER_ICUE.value",
-        "order": 18,
+        "order": 19,
         "text": "ui_spacer2",
         "type": "text"
       },
       "icue_mode": {
         "condition": "HEADER_ICUE.value",
-        "order": 19,
+        "order": 20,
         "text": "ui_icue_mode",
         "type": "combo",
         "options": [
@@ -484,7 +589,7 @@
         "editable": false,
         "max": 100,
         "min": 5,
-        "order": 20,
+        "order": 21,
         "text": "ui_icue_area_xoff",
         "type": "slider",
         "value": 50
@@ -494,7 +599,7 @@
         "editable": false,
         "max": 100,
         "min": 5,
-        "order": 21,
+        "order": 22,
         "text": "ui_icue_area_yoff",
         "type": "slider",
         "value": 90
@@ -504,7 +609,7 @@
         "editable": false,
         "max": 100,
         "min": 5,
-        "order": 22,
+        "order": 23,
         "text": "ui_icue_area_width",
         "type": "slider",
         "value": 75
@@ -514,7 +619,7 @@
         "editable": false,
         "max": 100,
         "min": 5,
-        "order": 23,
+        "order": 24,
         "text": "ui_icue_area_height",
         "type": "slider",
         "value": 30
@@ -524,7 +629,7 @@
         "editable": false,
         "max": 5,
         "min": 0,
-        "order": 24,
+        "order": 25,
         "text": "ui_icue_area_blur",
         "type": "slider",
         "value": 1
@@ -534,28 +639,28 @@
         "editable": false,
         "max": 100,
         "min": 0,
-        "order": 25,
+        "order": 26,
         "text": "ui_icue_area_decay",
         "type": "slider",
         "value": 20
       },
       "icue_main_color": {
         "condition": "HEADER_ICUE.value && icue_mode.value == 2",
-        "order": 26,
+        "order": 27,
         "text": "ui_icue_main_color",
         "type": "color",
         "value": "0 0.8 0"
       },
       "icue_area_preview": {
         "condition": "HEADER_ICUE.value && icue_mode.value == 1",
-        "order": 27,
+        "order": 28,
         "text": "ui_icue_area_preview",
         "type": "bool",
         "value": false
       },
       "spacer_06": {
         "condition": "HEADER_ICUE.value",
-        "order": 28,
+        "order": 29,
         "text": "ui_spacer1",
         "type": "text"
       }
