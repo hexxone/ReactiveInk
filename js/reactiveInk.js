@@ -38,7 +38,7 @@ var reactiveInk = {
 		paper_color: "1 0.9 0.8",
 		shader_quality: "medium",
 		stats_option: -1,
-		seizure_warning: true
+		seizure_warning: false
 	},
 	// fps limit, by wallpaper engine
 	fps: 60,
