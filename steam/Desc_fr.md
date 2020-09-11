@@ -16,5 +16,3 @@ Vous pouvez le trouver dans l'onglet "Changements" ci-dessus.
 Ce "Wallpaper" peut potentiellement déclencher des crises chez les personnes souffrant d'épilepsie photosensible.
 Un regard trop long peut provoquer des maux de tête, des changements de perception visuelle à court terme, etc.
 Il est conseillé de faire preuve de discernement.
-
-Traduit avec www.DeepL.com/Translator (version gratuite)

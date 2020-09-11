@@ -16,5 +16,3 @@ Si trova nella scheda "Modifiche" qui sopra.
 Questa "carta da parati" può potenzialmente scatenare crisi epilettiche per le persone con epilessia fotosensibile.
 Se lo si guarda troppo a lungo potrebbe causare mal di testa, cambiamenti nella percezione visiva a breve termine e altro ancora.
 Si consiglia la discrezione dello spettatore.
-
-Tradotto con www.DeepL.com/Translator (versione gratuita)

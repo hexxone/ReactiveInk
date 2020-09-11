@@ -16,5 +16,3 @@ Finden Sie in der Registerkarte "Änderungen" oben.
 Dieses "Hintergrundbild" kann bei Menschen mit lichtempfindlicher Epilepsie möglicherweise Anfälle auslösen.
 Ein zu langes Betrachten kann zu Kopfschmerzen, kurzfristigen Veränderungen der visuellen Wahrnehmung und mehr führen.
 Dem Betrachter wird Diskretion empfohlen.
-
-Übersetzt mit www.DeepL.com/Translator (kostenlose Version)
