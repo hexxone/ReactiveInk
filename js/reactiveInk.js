@@ -86,7 +86,7 @@ var reactiveInk = {
 		var settStorage = [sett, weas.settings, weicue.settings];
 
 		var _ignore = ["audioprocessing"];
-		var _reInit = ["strength", "blur_strength", "shader_quality"];
+		var _reInit = ["strength", "blur_strength", "shader_quality", "stats_option", "icue_mode"];
 
 		// loop all settings for updated values
 		for (var setting in props) {
@@ -130,6 +130,8 @@ var reactiveInk = {
 	initFirst: function () {
 		var self = reactiveInk;
 		var sett = self.settings;
+
+		weicue.init();
 
 		// real initializer
 		self.initSystem();
@@ -262,8 +264,9 @@ var reactiveInk = {
 		self.light.position.set(0, 20, 0);
 		self.scene.add(self.light);
 
-		// init plugins
-		weicue.init(self.mainCanvas);
+		// set origin Canvas
+		weicue.mainCanvas = self.mainCanvas;
+
 		// start rendering
 		self.renderer.setAnimationLoop(reactiveInk.renderLoop);
 		// print
@@ -289,15 +292,23 @@ var reactiveInk = {
 			// over FPS limit? cancel animation..
 			if (self.fpsThreshold < fpsThreshMin) return;
 			self.fpsThreshold -= fpsThreshMin;
+
 			// render canvas
+			self.composer.render();
+
+			// animate frame
 			var delta = ellapsed / fpsThreshMin;
-			self.renderFrame(delta, ellapsed);
+			self.animateFrame(delta, ellapsed);
+
+			// ICUE PROCESSING
+			weicue.updateCanvas();
+			
 		} catch (ex) {
 			print("renderLoop exception: " + ex.message);
 		}
 	},
 	// render a single frame with the given delta Multiplicator
-	renderFrame: function (delta, ellapsed) {
+	animateFrame: function (delta, ellapsed) {
 		var self = reactiveInk;
 		var sett = self.settings;
 		// stats
@@ -327,7 +338,7 @@ var reactiveInk = {
 		self.rorPass.uniforms.inkColor.value = new THREE.Vector3(iCol[0], iCol[1], iCol[2]);
 		self.rorPass.uniforms.paperColor.value = new THREE.Vector3(pCol[0], pCol[1], pCol[2]);
 		// apply blur
-		if(sett.blur_strength > 0) {
+		if (sett.blur_strength > 0) {
 			var bs = Math.max(0.1, sett.blur_strength - bassIntensity / 20) / 10;
 			self.blurPassX.uniforms.u_dir.value = new THREE.Vector2(bs, 0);
 			self.blurPassY.uniforms.u_dir.value = new THREE.Vector2(0, bs);
@@ -336,10 +347,6 @@ var reactiveInk = {
 		if (sett.strength > 0) {
 			self.chromaPass.uniforms.strength.value = sett.strength * bassIntensity;
 		}
-		// canvas render
-		self.composer.render(ellapsed);
-		// ICUE PROCESSING
-		weicue.updateCanvas();
 		// stats
 		if (self.stats) self.stats.end();
 	},
@@ -376,7 +383,7 @@ window.wallpaperPropertyListener = {
 	setPaused: (isPaused) => {
 		if (reactiveInk.PAUSED == isPaused) return;
 		print("Set pause: " + isPaused);
-		reactiveInk.PAUSED = isPaused;
+		weicue.PAUSED = reactiveInk.PAUSED = isPaused;
 		reactiveInk.lastFrame = (performance.now() / 1000) - 1;
 		reactiveInk.renderer.setAnimationLoop(isPaused ? null : reactiveInk.renderLoop);
 	}
