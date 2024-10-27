@@ -29,6 +29,7 @@ THREE.GlowShader = {
     // Simple Chromatic Aberration Shader
     fragmentShader: `
     precision lowp float;
+    //shaderquality
 
     varying vec2 vUv;
 
